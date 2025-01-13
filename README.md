@@ -40,7 +40,7 @@ Dropped helper columns like row_num after their use.
 
 The EDA phase explored trends, patterns, and potential outliers in the dataset. Queries were designed to extract insights across different dimensions.
 
-# Key Insights and Queries
+# 1 Key Insights and Queries
 
 Easier Queries
 
@@ -50,7 +50,7 @@ SELECT MAX(total_laid_off)
 
 FROM world_layoffs.layoffs_staging2;
 
-# Percentage Layoffs:
+# 2 Percentage Layoffs:
 
 SELECT MAX(percentage_laid_off), MIN(percentage_laid_off)
 
@@ -58,7 +58,7 @@ FROM world_layoffs.layoffs_staging2
 
 WHERE percentage_laid_off IS NOT NULL;
 
-# Companies with 100% Layoffs:
+# 3 Companies with 100% Layoffs:
 
 SELECT *
 
@@ -68,7 +68,7 @@ WHERE percentage_laid_off = 1;
 
 # Grouped Analysis
 
-# Companies with the Most Layoffs (Single Day):
+# 1 Companies with the Most Layoffs (Single Day):
 
 SELECT company, total_laid_off
 
@@ -78,7 +78,7 @@ ORDER BY 2 DESC
 
 LIMIT 5;
 
-# Total Layoffs by Location:
+# 2 Total Layoffs by Location:
 
 SELECT location, SUM(total_laid_off)
 
@@ -90,7 +90,7 @@ ORDER BY 2 DESC
 
 LIMIT 10;
 
-# Layoffs by Year:
+# 3 Layoffs by Year:
 
 SELECT YEAR(date), SUM(total_laid_off)
 
@@ -102,7 +102,7 @@ ORDER BY 1 ASC;
 
 Advanced Analysis
 
-# Top Companies by Layoffs per Year:
+# 4 Top Companies by Layoffs per Year:
 
 WITH Company_Year AS 
 (
@@ -130,7 +130,7 @@ AND years IS NOT NULL
 
 ORDER BY years ASC, total_laid_off DESC;
 
-# Rolling Total of Layoffs Per Month:
+# 5 Rolling Total of Layoffs Per Month:
 
 WITH DATE_CTE AS 
 
